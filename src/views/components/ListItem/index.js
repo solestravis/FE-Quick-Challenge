@@ -1,17 +1,15 @@
 import React from 'react';
 import { StyledListItem } from './styled';
-import { func, string } from 'prop-types';
+import { object, string } from 'prop-types';
 
-const ListItem = ({ children, id, onClick }) => (
-    <StyledListItem id={ id } onClick={ onClick }>
+const ListItem = ({ children }) => (
+    <StyledListItem>
         { children }
     </StyledListItem>
 );
 
 ListItem.propTypes = {
-    children: string,
-    id: string.isRequired,
-    onClick: func
+    children: string || object
 };
 
 export default ListItem;

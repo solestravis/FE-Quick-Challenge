@@ -1,10 +1,7 @@
-import { getNameLocalStorage } from '../utils';
-import { SAVE_DOG, SET_BREEDS, SET_IMAGE } from '../types';
+import { SET_BREEDS, SET_IMAGE } from '../types';
 
 const defaultState = () => ({
     dogNames: [],
-    // Load name from localStorage if available:
-    selectedBreed: getNameLocalStorage(),
     url: ''
 });
 
@@ -14,11 +11,6 @@ export function dogsReducer (state = defaultState(), { type, payload }) {
         return {
             ...state,
             dogNames: payload
-        };
-    case SAVE_DOG:
-        return {
-            ...state,
-            selectedBreed: payload
         };
     case SET_IMAGE:
         return {

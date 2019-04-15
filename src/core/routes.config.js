@@ -8,6 +8,6 @@ export default [
     },
     {
         component: DogImage,
-        path: '/image'
+        path: '/image/:breed'
     }
 ];

@@ -11,24 +11,23 @@ import { func, object, string } from 'prop-types';
 class DogImage extends Component {
 
     static propTypes = {
-        breed: string,
         getDogImage: func,
         history: object,
+        match: object,
         setDogImage: func,
         url: string
     }
 
     componentWillMount () {
-        // Generate a new image url before mount
-        const { breed, getDogImage } = this.props;
+        // Generate a new image url before mounting
+        const { getDogImage, match: { params: { breed } } } = this.props;
         getDogImage(breed);
     }
 
     componentWillUnmount () {
-        // Get rid of image url before unmount and clear breed name off localStorage
+        // Get rid of image url before unmounting
         const { setDogImage } = this.props;
         setDogImage('');
-        localStorage.clear();
     }
 
     _handleClickHistory = () => {
@@ -38,7 +37,7 @@ class DogImage extends Component {
     }
 
     render () {
-        const { breed, url } = this.props;
+        const { match: { params: { breed } }, url } = this.props;
         return (
             <Fragment>
                 <Header image={ headerImg }>
