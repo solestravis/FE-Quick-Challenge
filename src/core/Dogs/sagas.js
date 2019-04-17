@@ -1,6 +1,6 @@
 import { call, put } from 'redux-saga/effects';
 import { getDogs, getImage } from './services';
-import { setDogBreeds, setDogImage } from './action';
+import { setDogBreeds, setDogImage, showError } from './action';
 
 /**
  * Call API to retrieve dogs' list and dispatch a new action
@@ -16,12 +16,12 @@ export function* getBreedsList () {
 
 /**
  * Call API to generate image url and dispatch a new action
- * @param breedName: string
+ * @param {string} breedName asdaasd
  */
 export function* getDogImage ({ breedName }) {
     try {
         const data = yield call(getImage, breedName);
-        yield put(setDogImage(data));
+        data ? yield put(setDogImage(data)) : yield put(showError());
     } catch (e) {
         console.error(e);
     }

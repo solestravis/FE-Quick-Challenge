@@ -19,5 +19,6 @@ export const getImage = breedName => (
         })
         .catch(function (error) {
             console.error(error);
+            return null;
         })
 );
