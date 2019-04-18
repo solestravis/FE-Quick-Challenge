@@ -52,12 +52,17 @@ class DogImage extends Component {
                                 <Image
                                     alt="Error, no image found!"
                                     src={ url }
-                                    text="No image found"
                                 />
                                 :
-                                <Image alt={ breed } src={ url } />
+                                <Image
+                                    alt={ breed }
+                                    src={ url }
+                                />
                             :
-                            <Image alt="Loading" src={ LoadingSpinner } />
+                            <Image
+                                alt="Loading"
+                                src={ LoadingSpinner }
+                            />
                     }
                 </Container>
             </Fragment>
