@@ -19,8 +19,8 @@ class DogImage extends Component {
         url: string
     }
 
-    componentWillMount () {
-        // Generate a new image url before mounting
+    componentDidMount () {
+        // Generate a new image url
         const { getDogImage, match: { params: { breed } } } = this.props;
         getDogImage(breed);
     }

@@ -15,7 +15,7 @@ class DogList extends Component {
         getDogBreeds: func
     }
 
-    componentWillMount () {
+    componentDidMount () {
         // Get list of dog breeds from dog.ceo API
         const { getDogBreeds } = this.props;
         getDogBreeds();
