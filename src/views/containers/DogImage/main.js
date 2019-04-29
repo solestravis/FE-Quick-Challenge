@@ -11,7 +11,7 @@ import { bool, func, object, string } from 'prop-types';
 class DogImage extends Component {
 
     static propTypes = {
-        error: bool,
+        error: object,
         getDogImage: func,
         history: object,
         match: object,

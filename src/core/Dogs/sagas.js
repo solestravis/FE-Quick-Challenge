@@ -21,8 +21,9 @@ export function* getBreedsList () {
 export function* getDogImage ({ breedName }) {
     try {
         const data = yield call(getImage, breedName);
-        data ? yield put(setDogImage(data)) : yield put(showError());
+        yield put(setDogImage(data));
     } catch (e) {
         console.error(e);
+        yield put(showError());
     }
 }

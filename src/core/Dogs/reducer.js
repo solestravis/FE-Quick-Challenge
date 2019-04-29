@@ -3,7 +3,7 @@ import { SET_BREEDS, SET_IMAGE, SHOW_ERROR } from '../types';
 
 const defaultState = () => ({
     dogNames: [],
-    error: false,
+    error: {},
     url: ''
 });
 
