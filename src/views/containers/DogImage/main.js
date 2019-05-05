@@ -25,10 +25,9 @@ class DogImage extends Component {
     }
 
     componentWillUnmount () {
-        // Get rid of image url before unmount and clear breed name off localStorage
+        // Get rid of image url before unmount
         const { setDogImage } = this.props;
         setDogImage('');
-        localStorage.clear();
     }
 
     _handleClickHistory = () => {
