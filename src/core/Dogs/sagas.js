@@ -1,20 +1,6 @@
 import { call, put } from 'redux-saga/effects';
 import { getDogs, getImage } from './services';
-import { saveDog, setDogBreeds, setDogImage } from './action';
-
-/**
- * Save selected dog to localStorage and continue action dispatch
- * @param payload: string
- */
-export function* setLocalStorage ({ payload }) {
-    try {
-        const breedName = JSON.stringify(payload);
-        localStorage.setItem('name', breedName);
-        yield call(saveDog);
-    } catch (e) {
-        console.error(e);
-    }
-}
+import { setDogBreeds, setDogImage, showError } from './action';
 
 /**
  * Call API to retrieve dogs' list and dispatch a new action
@@ -30,7 +16,7 @@ export function* getBreedsList () {
 
 /**
  * Call API to generate image url and dispatch a new action
- * @param breedName: string
+ * @param {string} breedName asdaasd
  */
 export function* getDogImage ({ breedName }) {
     try {
@@ -38,5 +24,6 @@ export function* getDogImage ({ breedName }) {
         yield put(setDogImage(data));
     } catch (e) {
         console.error(e);
+        yield put(showError());
     }
 }

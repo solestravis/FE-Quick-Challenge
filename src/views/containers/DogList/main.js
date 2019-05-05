@@ -1,38 +1,24 @@
 import { Container } from '../../components/Container';
 import Header from '../../components/Header';
+import Link from '../../components/Link';
 import ListItem from '../../components/ListItem';
 import Listing from '../../components/Listing';
 import Title from '../../components/Title';
 import headerImg from '../../../assets/dogpattern.png';
 import React, { Component, Fragment } from 'react';
-import { array, func, object } from 'prop-types';
+import { array, func } from 'prop-types';
 
 class DogList extends Component {
 
     static propTypes = {
         dogNames: array,
-        getDogBreeds: func,
-        history: object,
-        saveDog: func
+        getDogBreeds: func
     }
 
-    componentWillMount () {
+    componentDidMount () {
         // Get list of dog breeds from dog.ceo API
         const { getDogBreeds } = this.props;
         getDogBreeds();
-    }
-
-    /**
-     * Save selected breed name to the store and redirect with `history.push()`.
-     * Initially I'd used `<Link to="">` from `react-router`
-     * but decided it'd be better if the entire ListItem
-     * element was clickable.
-     */
-    _handleClick = event => {
-        const { history, saveDog } = this.props;
-        const breed = event.currentTarget.id;
-        saveDog(breed);
-        history.push('/image');
     }
 
     render () {
@@ -47,13 +33,11 @@ class DogList extends Component {
                         {
                             dogNames &&
                             dogNames.map(name =>
-                                <ListItem
-                                    id={ name }
-                                    key={ name }
-                                    onClick={ this._handleClick }
-                                >
-                                    { name }
-                                </ListItem>
+                                <Link key={ name } to={ `/image/${ name }` }>
+                                    <ListItem>
+                                        { name }
+                                    </ListItem>
+                                </Link>
                             )
                         }
                     </Listing>

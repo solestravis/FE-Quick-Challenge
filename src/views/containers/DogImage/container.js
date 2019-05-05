@@ -1,12 +1,12 @@
 import DogImage from './main';
 
 import { connect } from 'react-redux';
-import { dogsBreedSelector, dogsImageSelector } from 'core/Dogs/selector';
+import { dogsErrorSelector, dogsImageSelector } from 'core/Dogs/selector';
 import { getDogImage, setDogImage } from 'core/Dogs/action';
 
 function mapStateToProps (state) {
     return {
-        breed: dogsBreedSelector(state),
+        error: dogsErrorSelector(state),
         url: dogsImageSelector(state)
     };
 }
